@@ -24,6 +24,14 @@ void display(Node *head)
     cout << endl;
 }
 
+void displayRecursive(Node *head)
+{
+    if (head == NULL)
+        return;
+    cout << head->val<<" ";
+    displayRecursive(head->next);
+}
+
 int size(Node *head)
 {
     Node *temp = head;
@@ -53,5 +61,6 @@ int main()
     f->next = g;
 
     display(a);
-    cout<<size(a);
+    cout << size(a);
+    displayRecursive(a);
 }
