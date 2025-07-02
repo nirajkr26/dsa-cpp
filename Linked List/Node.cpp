@@ -28,8 +28,16 @@ void displayRecursive(Node *head)
 {
     if (head == NULL)
         return;
-    cout << head->val<<" ";
+    cout << head->val << " ";
     displayRecursive(head->next);
+}
+
+void displayRecursiveReverse(Node *head)
+{
+    if (head == NULL)
+        return;
+    displayRecursiveReverse(head->next);
+    cout << head->val << " ";
 }
 
 int size(Node *head)
@@ -61,6 +69,8 @@ int main()
     f->next = g;
 
     display(a);
-    cout << size(a);
+    cout << size(a) << endl;
     displayRecursive(a);
+    cout << endl;
+    displayRecursiveReverse(a);
 }
