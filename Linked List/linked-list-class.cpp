@@ -100,7 +100,6 @@ public:
         if (size == 0)
         {
             cout << "List is empty";
-            return;
         }
         else
         {
@@ -114,7 +113,6 @@ public:
         if (size == 0)
         {
             cout << "List is empty";
-            return;
         }
         else
         {
@@ -125,6 +123,26 @@ public:
             }
             temp->next = NULL;
             tail = temp;
+            size--;
+        }
+    }
+
+    void deleteAtIdx(int idx)
+    {
+        if (idx < 0 || idx >= size)
+            cout << "Invalid index";
+        else if (idx == 0)
+            deleteAtHead();
+        else if (idx == size - 1)
+            deleteAtTail();
+        else
+        {
+            Node *temp = head;
+            for (int i = 1; i < idx; i++)
+            {
+                temp = temp->next;
+            }
+            temp->next=temp->next->next;
             size--;
         }
     }
@@ -159,5 +177,7 @@ int main()
     ll.deleteAtHead();
     ll.display();
     ll.deleteAtTail();
+    ll.display();
+    ll.deleteAtIdx(3);
     ll.display();
 }
