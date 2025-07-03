@@ -95,6 +95,20 @@ public:
         }
     }
 
+    void deleteAtHead()
+    {
+        if (size == 0)
+        {
+            cout << "List is empty";
+            return;
+        }
+        else
+        {
+            head = head->next;
+            size--;
+        }
+    }
+
     void display()
     {
         Node *temp = head;
@@ -118,5 +132,7 @@ int main()
     ll.display();
     ll.insertAtIdx(2, 80);
     ll.display();
-    cout << ll.getAtIdx(0);
+    cout << ll.getAtIdx(0) << endl;
+    ll.deleteAtHead();
+    ll.display();
 }
