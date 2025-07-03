@@ -109,6 +109,26 @@ public:
         }
     }
 
+    void deleteAtTail()
+    {
+        if (size == 0)
+        {
+            cout << "List is empty";
+            return;
+        }
+        else
+        {
+            Node *temp = head;
+            while (temp->next != tail)
+            {
+                temp = temp->next;
+            }
+            temp->next = NULL;
+            tail = temp;
+            size--;
+        }
+    }
+
     void display()
     {
         Node *temp = head;
@@ -127,6 +147,9 @@ int main()
     ll.insertAtTail(10);
     ll.display();
     ll.insertAtTail(20);
+    ll.insertAtTail(2);
+    ll.insertAtTail(9);
+    ll.insertAtTail(87);
     ll.display();
     ll.insertAtHead(5);
     ll.display();
@@ -134,5 +157,7 @@ int main()
     ll.display();
     cout << ll.getAtIdx(0) << endl;
     ll.deleteAtHead();
+    ll.display();
+    ll.deleteAtTail();
     ll.display();
 }
