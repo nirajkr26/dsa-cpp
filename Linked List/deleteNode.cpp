@@ -37,6 +37,19 @@ Node* deleteNode(Node* head,Node*target){
     return head;
 }
 
+Node* deleteNode(Node* head,int targetVal){
+    if(head->val==targetVal){
+        head=head->next;
+        return head;
+    }
+    Node* temp=head;
+    while(temp->next->val!=targetVal){
+        temp=temp->next;
+    }
+    temp->next=temp->next->next;
+    return head;
+}
+
 int main(){ 
     Node* a=new Node(10);
     Node* b=new Node(20);
@@ -49,7 +62,7 @@ int main(){
     d->next=e;
     Node* head=a;
     display(head);
-    head=deleteNode(a,d);
+    head=deleteNode(a,30);
     display(head);
 
 
