@@ -25,7 +25,20 @@ public:
         size = 0;
     }
 
-    void insertAtEnd(int val)
+    void insertAtHead(int val)
+    {
+        Node *temp = new Node(val);
+        if (size == 0)
+            head = tail = temp;
+        else
+        {
+            temp->next = head;
+            head = temp;
+        }
+        size++;
+    }
+
+    void insertAtTail(int val)
     {
         Node *temp = new Node(val);
         if (size == 0)
@@ -38,6 +51,29 @@ public:
         size++;
     }
 
+    void insertAtIdx(int idx, int val)
+    {
+        if (idx < 0 || idx > size)
+            cout << "invalid Index" << endl;
+        else if (idx == 0)
+            insertAtHead(val);
+        else if (idx == size)
+            insertAtTail(val);
+        else
+        {
+            Node *t = new Node(val);
+            Node *temp = head;
+            for (int i = 1; i < idx; i++)
+            {
+                temp = temp->next;
+            }
+            t->next = temp->next;
+            temp->next = t;
+            size++;
+        }
+    }
+
+    
     void display()
     {
         Node *temp = head;
@@ -53,8 +89,13 @@ public:
 int main()
 {
     LinkedList ll;
-    ll.insertAtEnd(10);
+    ll.insertAtTail(10);
     ll.display();
-    ll.insertAtEnd(20);
+    ll.insertAtTail(20);
     ll.display();
+    ll.insertAtHead(5);
+    ll.display();
+    ll.insertAtIdx(2, 80);
+    ll.display();
+    
 }
